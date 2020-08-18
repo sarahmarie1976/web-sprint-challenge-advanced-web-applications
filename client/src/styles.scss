@@ -8,12 +8,18 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  background-image: url('https://i.postimg.cc/d30PdmvB/bubbles2.jpg');
+  // background-repeat: no-repeat; 
+  background-size: 1950px 950px;
 }
 
 .App {
   font-family: "Montserrat", sans-serif;
   text-align: center;
   display: flex;
+  font-weight: bolder;
+  color: whitesmoke;
+  font-size: 20px;
 
   svg {
     height: 100%;

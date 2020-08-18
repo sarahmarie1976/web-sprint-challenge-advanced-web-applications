@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useHistory, NavLink } from 'react-router-dom';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
-import { Form, Label, Input, FormGroup, Navbar, Button, Card, CardHeader, } from 'reactstrap';
+import { Form, Label, Input, FormGroup, Navbar, Button, Card, CardHeader,  NavItem } from 'reactstrap';
 
 const Login = () => {
   const [login, setLogin] = useState({ 
@@ -27,7 +27,7 @@ const Login = () => {
     axiosWithAuth()
       .post(`api/login`, login)
       .then((res) => {
-        window.localStorage.setItem('token', res.data.payload);
+        localStorage.setItem('token', res.data.payload);
         setLogin({
            username: '', password: ''
         })
@@ -42,16 +42,22 @@ const Login = () => {
 
   return (
     <>
-    <header>
+    <div>
       <Navbar style={{  }} >
-        <NavLink style={{ margin: '3%'  }} to='/'>Login</NavLink>
-        <NavLink style={{ margin: '3%'}} to='/bubbles'>Bubbles</NavLink>
-      </Navbar>
-      </header>
+        <NavItem>
+          <NavLink style={{ padding: '2px', margin: '10px' }} to='/'>Login</NavLink>
+        </NavItem>
 
-      <Card  style={{ margin: '5%', height: '400px' }}>
+        <NavItem>
+          <NavLink style={{ padding: '2px', margin: '3px' }}   to='/bubbles'>Bubbles</NavLink>
+        </NavItem>
+
+      </Navbar>
+      </div>
+
+      <Card  style={{ margin: '5%', height: '400px', marginLeft: '30%', border: 'none', background: 'transparent' }}>
         
-      <CardHeader>Welcome to the Bubble App!</CardHeader>
+      <CardHeader style={{ border: 'none', background: 'transparent' }} >Welcome to the Bubble App!</CardHeader>
     
 
       <Form onSubmit={handleSubmit} >
@@ -78,7 +84,7 @@ const Login = () => {
             />
         </FormGroup>
 
-        <Button >Submit</Button>
+        <Button style={{  background: 'lightseagreen', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', fontWeight: 'bold' , textShadow: '2px 2px 8px #C0C0C0 ' }} >Submit</Button>
 
       </Form>
       </Card>
